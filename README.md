@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Warehouse and Storage Systems
 
-## Getting Started
+Sitio web del operador logístico 3PL **Warehouse and Storage Systems** (Zona Industrial
+Benito Juárez, Querétaro). Construido con Next.js 16 (App Router) y Tailwind CSS v4.
 
-First, run the development server:
+Diseño minimalista en blanco y negro: la paleta es solo `black`/`white` con escalas de
+opacidad, y las fotografías se muestran en escala de grises (`grayscale`) para mantener la
+coherencia visual. No hay colores de acento — si se agrega uno, conviene revisarlo también
+en `app/components/og-image.tsx`.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # servidor de desarrollo en http://localhost:3000
+npm run build   # build de producción
+npm run start   # servir el build
+npm run lint    # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estructura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Ruta                | Archivo                         |
+| ------------------- | ------------------------------- |
+| `/`                 | `app/page.tsx`                  |
+| `/servicios`        | `app/servicios/page.tsx`        |
+| `/servicios/[slug]` | `app/servicios/[slug]/page.tsx` |
+| `/nosotros`         | `app/nosotros/page.tsx`         |
+| `/sitemap.xml`      | `app/sitemap.ts`                |
+| `/robots.txt`       | `app/robots.ts`                 |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Las cuatro páginas de servicio se generan desde el arreglo `services` de `lib/site.ts`
+con `generateStaticParams`. Todo el sitio se prerenderiza como HTML estático.
 
-## Learn More
+## Editar el contenido
 
-To learn more about Next.js, take a look at the following resources:
+**`lib/site.ts` es la fuente única de verdad**: datos de contacto, copy de las páginas de
+servicio, clientes, misión y visión. La navegación, el sitemap y los datos estructurados
+se derivan de ahí, así que agregar un servicio a `services` crea su página, su entrada en
+el menú, su imagen Open Graph y su URL en el sitemap.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`lib/structured-data.ts` contiene el JSON-LD (`LocalBusiness`, `WebSite`, `Service`,
+`AboutPage`, `BreadcrumbList`). Se puede validar con el
+[Rich Results Test](https://search.google.com/test/rich-results).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Imágenes
 
-## Deploy on Vercel
+`public/images/` contiene **seis fotografías de stock provisionales** (Unsplash, licencia
+libre para uso comercial) referenciadas desde `images` y desde el campo `image` de cada
+servicio en `lib/site.ts`. `public/images/CREDITOS.md` documenta el origen de cada archivo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Están pensadas para reemplazarse por fotos reales del almacén: basta sobrescribir los
+archivos con el mismo nombre (formato horizontal, ~1600 px de ancho) y actualizar el texto
+`alt` en `lib/site.ts`. Como el sitio las renderiza en escala de grises, no hace falta
+retocar el color de las fotos nuevas.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Antes de publicar
+
+1. **Definir el dominio.** `siteUrl` en `lib/site.ts` usa el valor de
+   `NEXT_PUBLIC_SITE_URL` y, si no existe, `https://warehouseandstoragesystems.com`. De
+   esta URL dependen los canonical, el sitemap, el robots.txt y las imágenes Open Graph,
+   así que hay que apuntarla al dominio real:
+
+   ```bash
+   NEXT_PUBLIC_SITE_URL=https://midominio.com
+   ```
+
+2. **Reemplazar el favicon** (`app/favicon.ico`), que sigue siendo el de la plantilla.
+
+3. **Sustituir las fotos de stock** de `public/images/` por fotografía real del almacén
+   (ver la sección _Imágenes_).
+
+4. **Revisar las menciones de clientes** (Nestlé, P&G, Grammer, Massey Ferguson, Kurita
+   América) en `lib/site.ts`. Nombrar clientes por escrito suele requerir su
+   autorización; conviene confirmarlo antes de publicar.
+
+5. **Considerar un formulario de contacto.** Hoy los CTA usan `tel:` y `mailto:`. Un
+   formulario con Server Action requeriría además un servicio de correo.
+# ramiro-pw
