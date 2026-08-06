@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* En @layer base para que las utilidades de Tailwind (y las reglas sin capa)
+   puedan sobrescribir estos valores. */
+@layer base {
+  html {
+    /* Desplazamiento suave para los enlaces ancla (#contacto). Next 16 ya no
+       sobrescribe scroll-behavior: el atributo data-scroll-behavior="smooth"
+       del layout mantiene el salto instantáneo entre rutas. */
+    scroll-behavior: smooth;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
