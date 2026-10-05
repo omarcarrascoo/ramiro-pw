@@ -4,12 +4,12 @@ export function CtaSection() {
   return (
     <section
       id="contacto"
-      className="scroll-mt-24 bg-black text-white dark:border-t dark:border-white/10"
+      className="scroll-mt-24 bg-marino text-white dark:border-t dark:border-white/10"
     >
       <div className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
           <div>
-            <p className="text-[11px] tracking-[0.25em] text-white/60 uppercase">
+            <p className="text-[11px] tracking-[0.25em] text-celeste uppercase">
               Contacto
             </p>
             <h2 className="mt-6 max-w-xl text-3xl font-light tracking-tight text-balance sm:text-4xl">

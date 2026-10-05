@@ -109,8 +109,16 @@ export type Service = {
   image: { src: string; alt: string };
 };
 
+// Logotipo en PNG transparente (512 × 512). La versión para fondo oscuro aclara las
+// flechas, que en azul noche se pierden sobre el marino del modo oscuro y de las
+// imágenes Open Graph.
+export const logo = {
+  src: "/images/logo.png",
+  srcDark: "/images/logo-fondo-oscuro.png",
+} as const;
+
 // Fotografías temporales de Unsplash (licencia libre, uso comercial permitido),
-// tratadas en escala de grises por CSS. Reemplazar por fotos reales del almacén:
+// tratadas en duotono azul marino por CSS. Reemplazar por fotos reales del almacén:
 // ver public/images/CREDITOS.md para el detalle de cada archivo.
 export const images = {
   hero: {

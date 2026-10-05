@@ -6,8 +6,9 @@ necesidad de atribución (aunque se agradece). **Son marcadores de posición**: 
 sustituirlas por fotografía real del almacén de Querétaro, que además comunica mejor la
 operación propia.
 
-El sitio las muestra en escala de grises (`grayscale` de Tailwind) para mantener la
-identidad monocroma, así que cualquier reemplazo funcionará sin retoque de color.
+El sitio las muestra en duotono azul marino (escala de grises más una capa marino en modo
+`screen`, ver `app/components/duotone-overlay.tsx`) para unificarlas con la paleta, así
+que cualquier reemplazo funcionará sin retoque de color.
 
 | Archivo               | Uso                        | Origen                                                |
 | --------------------- | -------------------------- | ----------------------------------------------------- |

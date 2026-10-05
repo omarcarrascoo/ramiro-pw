@@ -1,4 +1,4 @@
-import { services, site, siteUrl } from "./site";
+import { logo, services, site, siteUrl } from "./site";
 
 const organizationId = `${siteUrl}/#organization`;
 
@@ -11,6 +11,7 @@ export const organizationJsonLd = {
   "@id": organizationId,
   name: site.name,
   url: siteUrl,
+  logo: `${siteUrl}${logo.src}`,
   description: `Operador logístico 3PL en ${site.address.city} con ${site.years} años de experiencia en almacenaje, transporte, maquila y administración de centros de distribución.`,
   telephone: site.phone.intl,
   email: site.email,
