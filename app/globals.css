@@ -5,6 +5,22 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Paleta de marca, tomada del logotipo. Cada azul trae los dos extremos de su degradado:
+   el tono base (más oscuro) y su variante "-claro". Genera utilidades como text-marino,
+   bg-cobalto o border-celeste/60.
+   - Marino: tinta del texto y fondos oscuros (sección de contacto, modo oscuro).
+   - Cobalto: único acento sobre blanco (antetítulos, numeración, botón principal y
+     enlaces al pasar el cursor).
+   - Celeste: el mismo papel de acento sobre fondos marino. */
+@theme {
+  --color-marino: #0a2558; /* Azul Marino / Noche: flechas y edificio */
+  --color-marino-claro: #10346b;
+  --color-cobalto: #0055a5; /* Azul Real / Cobalto: globo terráqueo */
+  --color-cobalto-claro: #1d70b8;
+  --color-celeste: #6ba4e8; /* Azul Celeste: continentes y brillos */
+  --color-celeste-claro: #a4c8f0;
+}
+
 /* En @layer base para que las utilidades de Tailwind (y las reglas sin capa)
    puedan sobrescribir estos valores. */
 @layer base {

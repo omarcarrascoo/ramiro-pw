@@ -23,13 +23,13 @@ export default function ServicesPage() {
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pt-20 pb-16 lg:pt-28">
-        <p className="text-[11px] tracking-[0.25em] text-black/60 uppercase dark:text-white/60">
+        <p className="text-[11px] tracking-[0.25em] text-cobalto uppercase dark:text-celeste">
           Servicios
         </p>
-        <h1 className="mt-8 max-w-3xl text-4xl leading-[1.1] font-light tracking-tight text-balance text-black sm:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mt-8 max-w-3xl text-4xl leading-[1.1] font-light tracking-tight text-balance text-marino sm:text-5xl lg:text-6xl dark:text-white">
           Logística integral, de la recepción al punto de venta.
         </h1>
-        <p className="mt-10 max-w-2xl border-t border-black/10 pt-10 text-base leading-relaxed text-black/60 dark:border-white/10 dark:text-white/60">
+        <p className="mt-10 max-w-2xl border-t border-marino/10 pt-10 text-base leading-relaxed text-marino/70 dark:border-white/10 dark:text-white/60">
           Diseñamos la operación completa: recibimos, custodiamos, preparamos y
           distribuimos su producto desde {site.address.city}, con la información y los
           indicadores que su equipo necesita para decidir.
@@ -45,17 +45,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-t border-black/10 dark:border-white/10">
+      <section className="border-t border-marino/10 dark:border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-28">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr]">
-            <h2 className="text-2xl font-light tracking-tight text-balance text-black sm:text-3xl dark:text-white">
+            <h2 className="text-2xl font-light tracking-tight text-balance text-marino sm:text-3xl dark:text-white">
               Infraestructura que respalda cada servicio
             </h2>
             <ul className="grid gap-px sm:grid-cols-2">
               {infrastructure.map((item) => (
                 <li
                   key={item}
-                  className="border-t border-black/10 py-5 text-sm text-black/65 dark:border-white/10 dark:text-white/65"
+                  className="border-t border-marino/10 py-5 text-sm text-marino/75 dark:border-white/10 dark:text-white/65"
                 >
                   {item}
                 </li>

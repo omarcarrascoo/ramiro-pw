@@ -59,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-white text-black selection:bg-black selection:text-white dark:bg-black dark:text-white dark:selection:bg-white dark:selection:text-black">
+      <body className="flex min-h-full flex-col bg-white text-marino selection:bg-celeste-claro selection:text-marino dark:bg-marino dark:text-white dark:selection:bg-celeste dark:selection:text-marino">
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
